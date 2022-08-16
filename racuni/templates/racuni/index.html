@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    th, td {
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<h1>Dobrodošli na strani za urejanje računov</h1>
+
+{% if bills_list %}
+    <table>
+        <tr>
+            <td>EOR</td>
+            <td>Št. računa</td>
+            <td>Potrjeno</td>
+            <td>Nazadnje posodobljeno</td>
+        </tr>
+        {% for bill in bills_list %}
+            <tr>
+                <td>{{ bill.eor }}</td>
+                <td>{{ bill.bill_number }}</td>
+                <td>{{ bill.status }}</td>
+                <td>{{ bill.last_updated }}</td>
+                <td><a href="/racuni/{{ bill.eor }}"> Uredi </a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <h2>Izstavljenega ni bilo še nobenega računa</h2>
+{% endif %}
+<a href="{% url 'companies' %}">Urejaj podjetja</a>
+
+<a href="{% url 'output' %}">Izpis</a>
+</body>
+</html>

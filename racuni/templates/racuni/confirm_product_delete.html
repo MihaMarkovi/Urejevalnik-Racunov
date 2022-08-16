@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Ali ste prepričani da želite izbrisati: {{ product.product_title }}</h1>
+<input size="300" type="submit" style="height: 50px; width: 100px; background-color: aquamarine" value="NE"
+       onclick="history.back()">
+
+<form method="POST">
+    {% csrf_token %}
+    <input size="300" type="submit" style="height: 25px; width: 50px; background-color: red" value="DA">
+</form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spremeni</title>
+</head>
+<body>
+
+<a href="{% url 'index' %}"><input type="submit" value="Nazaj"></a>
+<h1>To so podatki o naročilu</h1>
+
+<form method="post">
+    {% csrf_token %}
+        {% for field in form %}
+            {{ field.label_tag }}
+            {{ field }}<br><br>
+        {% endfor %}
+    <button type="submit">Posodobi</button>
+</form><br>
+
+<h2>Postavke:</h2>
+<ul>
+{% for product in products %}
+    <a href="{%  url 'product-details' bill.eor product.pk %}"><li>{{ product.product_title }}</li></a>
+{% endfor %}
+</ul>
+
+<a href="{% url 'add-product'  bill.eor%}"><input type="submit" value="Dodaj postavko"></a>
+</body>
+</html>

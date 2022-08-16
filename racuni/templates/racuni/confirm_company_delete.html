@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Izbriši Podjetje</title>
+</head>
+<body>
+{% if not bills %}
+    <h1>Ali zares želite izbrisati podjetje {{ company }}?</h1>
+    <a href="{% url 'company-details' company.pk%}"><input size="300" type="submit" style="height: 50px; width: 100px; background-color: aquamarine" value="NE"></a>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input size="300" type="submit" style="height: 25px; width: 50px; background-color: red" value="DA">
+    </form>
+{% else %}
+    <a href="{% url 'company-details' company.pk%}"><input type="submit" value="Nazaj"></a>
+    <h2>Podjetja ne morete izbrisati, saj je vezano na sledeče račune:</h2>
+    <ul>
+        {% for bill in bills %}
+            <a href="{% url 'bill-details' bill.eor%}"><li>{{ bill.eor }}</li></a>
+        {% endfor %}
+    </ul>
+{% endif %}
+</body>
+</html>

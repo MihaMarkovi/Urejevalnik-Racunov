@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Podjetja</title>
+</head>
+<body>
+
+
+<a href="{% url 'index' %}"><input type="submit", value="Nazaj"></a>
+
+<h1>Tukaj lahko urejate podjetja</h1>
+
+{% if companies_list %}
+    <ul>
+    {% for company in companies_list %}
+        <li><a href="{% url 'company-details' company.pk %}">{{ company.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+<a href="{% url 'add-company' %}"><input type="submit" value="Dodaj Podjetje"></a>
+
+</body>
+</html>

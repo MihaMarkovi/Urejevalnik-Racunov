@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zgodovina</title>
+</head>
+<body>
+<a href="{% url 'index' %}"><input type="submit" value="Nazaj"></a>
+<h1>To je zgodovina potrjenih računov </h1>
+{% if bills_list %}
+
+    {% for bill in bills_list %}
+        <table class="table">
+            <tr>
+                <td>EOR</td>
+                <td>Št. računa</td>
+                <td>Potrjeno</td>
+                <td>Nazadnje posodobljeno</td>
+            </tr>
+            {% for bill in bills_list %}
+                <tr>
+                    <td>{{ bill.eor }}</td>
+                    <td>{{ bill.bill_number }}</td>
+                    <td>{{ bill.status }}</td>
+                    <td>{{ bill.last_updated }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endfor %}
+{% else %}
+    <h2>Nimate še potrjenih računov</h2>
+{% endif %}
+</body>
+</html>

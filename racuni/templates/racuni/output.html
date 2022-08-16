@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8" http-equiv="refresh" content="10">
     <title>Izpis</title>
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
 <body>
-<a href="{% url 'index' %}"><input type="submit" value="Nazaj"></a>
+<a href="{% url 'index' %}" class="btn btn-secondary m-3"><i class="bi bi-box-arrow-left m-1"></i>Nazaj</a>
 
 
 {% if latest_bill %}
-<ul>
+<ul class="m-1">
     <li>
         <h3>Podjetje</h3>
         <ul>
@@ -60,8 +68,13 @@
     </li>
 </ul>
     {% else %}
-    <h1>Potrdili niste še nobenega računa</h1>
+    <h1 class="m-2">Potrdili niste še nobenega računa</h1>
 {% endif %}
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 
 </body>
 </html>

@@ -13,7 +13,7 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         GetRequest().get_data()
-        return Bill.objects.order_by('-last_updated')
+        return Bill.objects.filter(status=False).order_by('-last_updated')
 
 
 class BillDetailsView(FormMixin, generic.DetailView):
@@ -168,6 +168,14 @@ class AddNewProduct(FormMixin, generic.TemplateView):
                         quantity=form.cleaned_data['quantity'], value=form.cleaned_data['value'])
             f.save()
             return redirect('bill-details', self.kwargs['bill_id'])
+
+
+class HistoryView(generic.ListView):
+    template_name = 'racuni/history.html'
+    context_object_name = 'bills_list'
+
+    def get_queryset(self):
+        return Bill.objects.filter(status=True)
 
 
 class OutputView(generic.TemplateView):

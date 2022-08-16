@@ -49,3 +49,8 @@ class GetRequest():
                 value = product['c']
                 p = Product(bill=Bill.objects.get(eor=eor), product_title=product_title, quantity=quantity, value=value)
                 p.save()
+
+
+class PostRequest():
+    def send_data(self):
+        return 0

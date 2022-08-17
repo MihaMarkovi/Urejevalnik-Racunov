@@ -1,12 +1,18 @@
+import os
+
 import requests
 from datetime import datetime
 from .models import Company, Bill, Product
 from dateutil import parser
+from dotenv import load_dotenv
 
+load_dotenv()
+
+API_KEY = os.getenv("API_KEY")
 
 class GetRequest():
     def get_data(self):
-        url = "https://apica.iplus.si/api/Naloga?API_KEY=F46F8FFF-D91E-4688-847C-E895EBE51171"
+        url = f"https://apica.iplus.si/api/Naloga?API_KEY={API_KEY}"
         response = requests.get(url)
         data = response.json()
 
@@ -89,5 +95,5 @@ class PostRequest():
             "z": products_list
         }
 
-        url = "https://apica.iplus.si/api/Naloga?API_KEY=F46F8FFF-D91E-4688-847C-E895EBE51171"
+        url = f"https://apica.iplus.si/api/Naloga?API_KEY={API_KEY}"
         r = requests.post(url, json=data)

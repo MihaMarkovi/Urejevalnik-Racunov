@@ -24,6 +24,10 @@
 <div class="m-3">
     <h1>Dobrodošli na strani za urejanje računov</h1>
 
+    <a href="{% url 'companies' %}" class="btn btn-primary m-2">Urejaj podjetja</a>
+    <a href="{% url 'history' %}" class="btn btn-primary m-2">Zgodovina</a>
+
+    <a href="{% url 'output' %}" class="btn btn-secondary m-2">Izpis</a>
     {% if bills_list %}
         <table class="table">
             <tr>
@@ -36,7 +40,7 @@
                 <tr>
                     <td>{{ bill.eor }}</td>
                     <td>{{ bill.bill_number }}</td>
-                    <td>{{ bill.status }}</td>
+                    <td> Ne </td>
                     <td>{{ bill.last_updated }}</td>
                     <td><a href="/racuni/{{ bill.eor }}" class="btn btn-primary"> Uredi </a></td>
                 </tr>
@@ -45,10 +49,7 @@
     {% else %}
         <h2>Izstavljenega ni bilo še nobenega računa</h2>
     {% endif %}
-    <a href="{% url 'companies' %}" class="btn btn-primary m-2">Urejaj podjetja</a>
-    <a href="{% url 'history' %}" class="btn btn-primary m-2">Zgodovina</a>
 
-    <a href="{% url 'output' %}" class="btn btn-secondary m-2">Izpis</a>
     <div>
     </div>
         <!-- Bootstrap JavaScript Libraries -->

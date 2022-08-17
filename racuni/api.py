@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 from .models import Company, Bill, Product
 from dateutil import parser
 
@@ -52,5 +53,42 @@ class GetRequest():
 
 
 class PostRequest():
-    def send_data(self):
-        return 0
+    def send_data(eor):
+        bill = Bill.objects.get(eor=eor)
+        products = Product.objects.filter(bill__eor=eor)
+
+        company = Company.objects.get(pk=bill.producer.pk)
+        company_string = "%s#%s#%s#%s" % (company.title, company.address, company.post_office, company.ddv_id)
+
+        last_updated = bill.last_updated.astimezone().strftime('%Y-%m-%dT%H:%M:%S%z')
+        last_updated = last_updated[:22] + ':' + last_updated[22:]
+
+        if bill.status:
+            status = 5
+        else:
+            status = 1
+
+        products_list = []
+        for product in products:
+            pro = {
+                "a": product.product_title,
+                "b": product.quantity,
+                "c": product.value
+            }
+            products_list.append(pro)
+
+        data = {
+            "a": company_string,
+            "b": bill.seller,
+            "c": bill.bill_number,
+            "d": last_updated,
+            "e": bill.tax_level,
+            "f": bill.zoi,
+            "g": bill.eor,
+            "h": status,
+            "z": products_list
+        }
+
+        url = "https://apica.iplus.si/api/Naloga?API_KEY=F46F8FFF-D91E-4688-847C-E895EBE51171"
+        r = requests.post(url, json=data)
+        print(data)

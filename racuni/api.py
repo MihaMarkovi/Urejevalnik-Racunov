@@ -91,4 +91,3 @@ class PostRequest():
 
         url = "https://apica.iplus.si/api/Naloga?API_KEY=F46F8FFF-D91E-4688-847C-E895EBE51171"
         r = requests.post(url, json=data)
-        print(data)

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="afe616e8-0fa3-4f74-8283-a7ac5b8f858f" name="Changes" comment="Added history">
+    <list default="true" id="afe616e8-0fa3-4f74-8283-a7ac5b8f858f" name="Changes" comment="Implemented API, fixed several issues with templates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/racuni/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/racuni/api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/racuni/templates/racuni/bill_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/racuni/templates/racuni/bill_details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/racuni/templates/racuni/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/racuni/templates/racuni/history.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/racuni/templates/racuni/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/racuni/templates/racuni/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/racuni/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/racuni/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +102,7 @@
       <workItem from="1660648524380" duration="242000" />
       <workItem from="1660653016935" duration="1909000" />
       <workItem from="1660661958340" duration="13110000" />
-      <workItem from="1660718188942" duration="7545000" />
+      <workItem from="1660718188942" duration="8840000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1660646580270</created>
@@ -128,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660678768540</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Implemented API, fixed several issues with templates">
+      <created>1660734581435</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1660734581435</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,6 +153,7 @@
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Added refresh rate to output page" />
     <MESSAGE value="Added history" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added history" />
+    <MESSAGE value="Implemented API, fixed several issues with templates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented API, fixed several issues with templates" />
   </component>
 </project>

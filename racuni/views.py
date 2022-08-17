@@ -1,10 +1,11 @@
+import requests
 from django.shortcuts import render, redirect
 from django.views import generic
 from django.views.generic.edit import FormMixin
 from .models import Bill, Company, Product
 from .forms import BillDetailsForm, ProductDetailsForm, CompanyDetailsForm
 from datetime import datetime
-from .api import GetRequest
+from .api import GetRequest, PostRequest
 
 
 class IndexView(generic.ListView):
@@ -45,6 +46,10 @@ class BillDetailsView(FormMixin, generic.DetailView):
             b.status = form.cleaned_data['status']
             b.last_updated = datetime.now()
             b.save()
+
+            if b.status:
+                PostRequest.send_data(eor)
+                return redirect('index')
 
             return redirect('bill-details', b.eor)
 
@@ -192,8 +197,8 @@ class OutputView(generic.TemplateView):
                 total_price += product.value
 
             context['total_price'] = total_price
-            context['no_tax'] = total_price - total_price*last_bill.tax_level
-            context['ddv'] = total_price*last_bill.tax_level
+            context['no_tax'] = total_price - total_price * last_bill.tax_level
+            context['ddv'] = total_price * last_bill.tax_level
             context['latest_bill'] = last_bill
             context['latest_products'] = valid_products
             return context

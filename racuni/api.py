@@ -10,6 +10,7 @@ load_dotenv()
 
 API_KEY = os.getenv("API_KEY")
 
+
 class GetRequest():
     def get_data(self):
         url = f"https://apica.iplus.si/api/Naloga?API_KEY={API_KEY}"

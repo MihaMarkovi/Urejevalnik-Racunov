@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Spremeni </title>
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</head>
+<body>
+<a href="{% url 'index' %}" class="m-3 btn btn-secondary"><i class="bi bi-box-arrow-left m-1"></i>Nazaj</a>
+{% if bill.status == False %}
+    <div class="m-3 p-2"><h1>Podatki:</h1>
+        <form method="post" class="p-2">
+            <div class="form-group">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-row m-2">
+                        <div class="col-md-2 mb-3">
+                            {% if field.label == "Potrjeno" %}
+                                {{ field.label_tag }}
+                                {{ field }}
+                                <small class="text-danger">PO ODOBRITVI, RAČUNA NE BOST MOGLI VEČ SPREMINJATI</small>
+                            {% else %}
+                                {{ field.label_tag }}
+                                {{ field }}
+
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-primary m-2"><i class="bi bi-arrow-clockwise m-1"></i>Posodobi</button>
+        </form>
+        <br>
+    </div>
+
+    <div class="m-3 p-2">
+        <h2>Postavke:</h2>
+        <ul class="p-2">
+            {% for product in products %}
+                <a href="{% url 'product-details' bill.eor product.pk %}">
+                    <li>{{ product.product_title }}</li>
+                </a>
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'add-product'  bill.eor %}" class="btn btn-primary"><i class="bi bi-plus m-1"></i>Dodaj Postavko</a>
+    </div>
+{% else %}
+    <h1>Račun {{ bill.eor }} ste že potrdili in ga ne morete več urejati</h1>
+{% endif %}
+<!-- Bootstrap JavaScript Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+</body>
+</html>
